@@ -5,19 +5,26 @@ import { useState } from 'react'
 //import { searchWraper } from './searchWraper'
 import './App.css'
 import './searchStyle.css'
+//import { MainWraper } from './mainWraper'
 import { APIRequest } from './APIRequests/APIRequest'
 
 function App() {
-    //const [count, setCount] = useState(0)
-    //const searchWraper = searchWraper();
-    //указать в UseState стартовое значение
     const [searchValue, setSearchValue] = useState('');
+    const [serchResult, setSerchResult] = useState('');
     return (
+        <div className='root_wraper'>
         <div className="search_wraper">
             <input 
             value = {searchValue}
             onChange={e => setSearchValue(e.target.value)}/>
-            <button className="search_btn" onClick = {async () => await APIRequest(searchValue)}>Search</button>
+            <button className="search_btn" onClick = {async () => {
+                APIRequest(searchValue)
+                .then(json => {
+                    if(json){setSerchResult(json); 
+                    console.log(searchValue, serchResult)}
+                    })
+            }}>Search</button>
+        </div>
         </div>
         /*<>
             <div>

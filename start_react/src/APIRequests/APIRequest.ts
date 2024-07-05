@@ -14,7 +14,6 @@ export async function APIRequest (searchValue: string) {
         requestOptions,
       );
       const result = await response.text();
-      //const json = JSON.parse(result);
       console.log(result);
       return result;
     } catch (error) {
