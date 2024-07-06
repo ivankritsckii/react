@@ -26,6 +26,19 @@ button {
   button:hover {
     border-color: #646cff;
   }
+  .error_btn{
+    background-color: rgb(252, 139, 139);
+  }
+  .loading{
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+  }
   
   @media (prefers-color-scheme: light) {
     :root {
