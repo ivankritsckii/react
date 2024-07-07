@@ -1,6 +1,6 @@
 import './resultStyle.css'
 
-export function SearchWraper(args: { serchResult: { results: [] } }) {
+export function MainWraper(args: { serchResult: { results: [] } }) {
     if (args.serchResult.results) {
         const searchList = args.serchResult.results.map(
             (item: { name: string; height: string; mass: string }) => {

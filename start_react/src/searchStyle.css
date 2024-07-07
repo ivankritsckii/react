@@ -39,6 +39,16 @@ button {
     align-items: center;
     color: black;
   }
+  .error_handler{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 90vw;
+    height: 100vh;
+    font-size: 32px;
+    text-align: center;
+    font-weight: bold;
+  }
   
   @media (prefers-color-scheme: light) {
     :root {
