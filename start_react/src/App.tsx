@@ -1,7 +1,6 @@
 import { Component } from 'react'
 import PacmanLoader from 'react-spinners/PacmanLoader'
 import { SearchWraper } from './searchWraper'
-import './App.css'
 import './searchStyle.css'
 import { APIRequest } from './APIRequests/APIRequest'
 
