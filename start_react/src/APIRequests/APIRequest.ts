@@ -14,6 +14,7 @@ export async function APIRequest (searchValue: string) {
         requestOptions,
       );
       const result = await response.text();
+      console.log(result)
       return result;
     } catch (error) {
       console.error(error);
