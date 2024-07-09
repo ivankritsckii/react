@@ -1,10 +1,9 @@
-//import { Component } from 'react'
 import { useState } from 'react'
-import PacmanLoader from 'react-spinners/PacmanLoader'
+import { LoadingOpenClose } from './loadingOpenClose.tsx'
 import { MainWraper } from './mainWraper.tsx'
 import './searchStyle.css'
-import { APIRequest } from './APIRequests/APIRequest'
 import { MyErrorBoundary } from './errorHeandlet.tsx'
+import { RequestHandler } from './APIRequests/RequestHandler.ts'
 
 export function App () {
     const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue') || '');
@@ -15,33 +14,16 @@ export function App () {
     if(isError) {
         throw new Error ('new Error')
     }
-    const RequestHandler = async () => {
-        changeIsAPIRequest(false)
-        APIRequest(searchValue).then((json) => {
-            if (json) {
-                console.log(json)
-                setSerchResult(json)
-                localStorage.setItem('searchValue', searchValue)
-                console.log(serchResult);
-            }
-            changeIsAPIRequest(true)
+
+    const APIHandler = () => {
+        setIsGetAPIRequest(false)
+        RequestHandler(searchValue).
+        then((json) => {
+            setSerchResult(json);
+            setIsGetAPIRequest(true)
         })
     }
-
-    const handleError = () => setIsError(true)
-
-    const changeSearchValue = (target: string) => setSearchValue(target)
-    const changeIsAPIRequest = (target: boolean) => setIsGetAPIRequest(target)
-    const LoadingOpenClose = (state: boolean) => {
-        return state ? (
-            ''
-        ) : (
-            <div className="loading">
-                //<PacmanLoader color={'#36D7B7'} size={150} />{' '}
-            </div>
-        )
-    }
-    window.addEventListener('load', RequestHandler)
+    window.addEventListener('load', APIHandler)
    return(
     <MyErrorBoundary>
     <div className="root_wraper">
@@ -49,19 +31,14 @@ export function App () {
         <div className="search_wraper">
             <input
                 value={searchValue}
-                onChange={(e) => {
-                    changeSearchValue(e.target.value)
-                    if(e.target.value === "error") {
-                        throw new Error("new err")
-                    }
-                }}
+                onChange={(e) => setSearchValue(e.target.value)}
             />
-            <button className="search_btn" onClick={RequestHandler}>
+            <button className="search_btn" onClick={APIHandler}>
                 Search
             </button>
             <button
                 className="search_btn error_btn"
-                onClick={handleError}
+                onClick={() => setIsError(true)}
             >
                 Throw an error
             </button>
