@@ -1,10 +1,11 @@
-import { LoadingOpenClose } from '../loadingOpenClose'
+import { LoadingOpenClose } from '../helpers/loadingOpenClose'
 import { APIRequest } from './APIRequest'
 
-export const RequestHandler = async (searchValue: string): Promise<string> => {
-    return APIRequest(searchValue).then((json) => {
+export const RequestHandler = async (searchValue: string, page?: number): Promise<string> => {
+    let request = "";
+    page ? request = `${searchValue}&page=${page}` : request = searchValue
+    return APIRequest(`${request}`).then((json) => {
         if (json) {
-            //console.log(json)
             localStorage.setItem('searchValue', searchValue)
             LoadingOpenClose(true)
             return json
