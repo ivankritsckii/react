@@ -9,4 +9,9 @@
     font-size: 24px;
     cursor: pointer;
     margin: 0 5px;
+    color: black;
+}
+.selected_element{
+    text-decoration: underline;
+    color: rgb(212, 0, 255);
 }

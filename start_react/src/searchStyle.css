@@ -30,7 +30,7 @@ button {
     background-color: rgb(252, 139, 139);
   }
   .loading{
-    position: absolute;
+    position: fixed;
     width: 100vw;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.1);

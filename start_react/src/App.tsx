@@ -20,6 +20,7 @@ export function App ({page = 1}) {
     
 
     const APIHandler = (page:number) => {
+        console.log(page)
         setIsGetAPIRequest(false)
         RequestHandler(searchValue, page).
         then((json) => {
@@ -28,7 +29,6 @@ export function App ({page = 1}) {
         })
     }
     if(page !== curPage) {
-        console.log(page);
         setCurPage(page);
         APIHandler(page)
     }

@@ -13,6 +13,10 @@ export function Router() {
     <Route path='/react/page=4' element= {<App page = {4}/>} />
     <Route path='/react/page=5' element= {<App page = {5}/>} />
     <Route path='/react/page=6' element= {<App page = {6}/>} />
+    <Route path='/react/page=7' element= {<App page = {7}/>} />
+    <Route path='/react/page=8' element= {<App page = {8}/>} />
+    <Route path='/react/page=9' element= {<App page = {9}/>} />
+    <Route path='/react/page=10' element= {<App page = {10}/>} />
     <Route path='*' element= {<Page404 />} />
     </Routes>
   );
