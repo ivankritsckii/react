@@ -6,7 +6,6 @@ export const RequestHandler = async (searchValue: string, page?: number): Promis
     page ? request = `${searchValue}&page=${page}` : request = searchValue
     return APIRequest(`${request}`).then((json) => {
         if (json) {
-            localStorage.setItem('searchValue', searchValue)
             LoadingOpenClose(true)
             return json
         }

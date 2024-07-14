@@ -6,10 +6,11 @@ import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
 import { RequestHandler } from './APIRequests/RequestHandler.ts'
 import { Pagination } from './pagination.tsx'
 import { Link } from 'react-router-dom'
+import { useLocalStorage } from './helpers/useLS.ts'
 
 export function App ({page = 1}) {
+    const [searchValue, setSearchValue] = useLocalStorage('searchValue', "")
     const [curPage, setCurPage] = useState(page);
-    const [searchValue, setSearchValue] = useState(localStorage.getItem('searchValue') || '');
     const [serchResult, setSerchResult] = useState('{}');
     const [isGetAPIRequest, setIsGetAPIRequest] = useState(true);
     const [isError,  setIsError] = useState(false);
@@ -41,7 +42,10 @@ export function App ({page = 1}) {
         <div className="search_wraper">
             <input
                 value={searchValue}
-                onChange={(e) => setSearchValue(e.target.value)}
+                onChange={(e) => {
+                    setSearchValue(e.target.value)
+                    console.log(e.target.value)
+                }}
             />
             <Link to = {`/react/`}>
             <button className="search_btn" onClick={() => {APIHandler(1)}}>
