@@ -1,18 +1,18 @@
-import React, { ErrorInfo, ReactNode } from "react";
+import React, { ErrorInfo, ReactNode } from 'react'
 interface Props {
-  children?: ReactNode;
+    children?: ReactNode
 }
 
 interface State {
-  hasError: boolean;
+    hasError: boolean
 }
 
-export class MyErrorBoundary extends React.Component <Props, State> {
-  public state: State = {
-    hasError: false
-  };
+export class MyErrorBoundary extends React.Component<Props, State> {
+    public state: State = {
+        hasError: false,
+    }
 
-    public static getDerivedStateFromError():State {
+    public static getDerivedStateFromError(): State {
         return { hasError: true }
     }
 
@@ -23,7 +23,12 @@ export class MyErrorBoundary extends React.Component <Props, State> {
 
     public render() {
         if (this.state.hasError) {
-            return <div className="error_handler">Something went wrong. Please reload the page or contact support</div>
+            return (
+                <div className="error_handler">
+                    Something went wrong. Please reload the page or contact
+                    support
+                </div>
+            )
         }
         return this.props.children
     }
