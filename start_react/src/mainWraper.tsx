@@ -34,9 +34,6 @@ export function MainWraper(args: { serchResult: { results: [] } }) {
                 <Link to={window.location.href.split('datails')[0]}>
                     <div
                         className="search_value_wraper"
-                        onClick={() => {
-                            console.log(window.location.href)
-                        }}
                     >
                         {searchList}
                     </div>

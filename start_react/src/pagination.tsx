@@ -7,7 +7,6 @@ export function Pagination(args: {
 }) {
     const [selectBtn, setSelectBtn] = useState(1)
     const resPagination = []
-    console.log(args.serchResult.next)
     if (args.serchResult.count > 9) {
         for (let i = 0; i < args.serchResult.count / 10; i++) {
             if (selectBtn === i + 1) {

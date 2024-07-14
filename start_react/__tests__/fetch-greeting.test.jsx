@@ -1,14 +1,8 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react'
-import { App } from '../src/App'
-import {expect, jest, test} from '@jest/globals';
+import {describe, expect, test} from '@jest/globals';
+import {sum} from './sum';
 
-
-test.todo('получение приветствия')
-test.todo('получение приветствия2')
-
-test("render learn react link", () => {
-    const { getByText } = render(<App />);
-    const linkElement = getByText(/learn react/i);
-    expect(linkElement).toBeInDocument()
-})
+describe('sum module', () => {
+  test('adds 1 + 2 to equal 3', () => {
+    expect(sum(1, 2)).toBe(3);
+  });
+});

@@ -49,7 +49,7 @@ export function DatailsElement() {
                 Birth Year: {character[0].birth_year}
             </div>
             <div className="details_name">Gender: {character[0].gender}</div>
-            <Link to={'/react/page=1/'}>
+            <Link to={window.location.href.split('datails')[0]}>
                 <button>Close</button>
             </Link>
         </div>

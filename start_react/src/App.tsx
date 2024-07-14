@@ -20,7 +20,6 @@ export function App({ page = 1 }) {
     }
 
     const APIHandler = (page: number) => {
-        console.log(page)
         setIsGetAPIRequest(false)
         RequestHandler(searchValue, page).then((json) => {
             setSerchResult(json)
@@ -42,10 +41,9 @@ export function App({ page = 1 }) {
                         value={searchValue}
                         onChange={(e) => {
                             setSearchValue(e.target.value)
-                            console.log(e.target.value)
                         }}
                     />
-                    <Link to={`/react/`}>
+                    <Link to={`/react/page=1`}>
                         <button
                             className="search_btn"
                             onClick={() => {
