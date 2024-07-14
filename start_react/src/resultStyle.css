@@ -1,0 +1,53 @@
+.result_window_wraper{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card_wraper{
+    width: 300px;
+    height: 500px;
+    background-color: rgb(224, 224, 254);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+    gap: 5px;
+    text-align: center;
+}
+.card_name{
+    font-weight: bold;
+}
+.search_value_wraper{
+    width: 50vw;
+    background-color: rgb(255, 255, 229);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.datails_wraper{
+    top: 15px;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: calc(50vh + 60px);
+}
+.details_titel{
+    font-size: 32px;
+    font-weight: bold;
+}
+.details_wraper{
+    width: 40vw;
+    height: 50vh;
+    background-color: rgb(192, 138, 242);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

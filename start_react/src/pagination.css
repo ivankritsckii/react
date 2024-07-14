@@ -1,0 +1,17 @@
+.pagination_wraper{
+    width: 95vw;
+    height: 50px;
+    text-align: center;
+    margin-top: 30px;
+}
+.pagination_element{
+    text-decoration: none;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 0 5px;
+    color: black;
+}
+.selected_element{
+    text-decoration: underline;
+    color: rgb(212, 0, 255);
+}
