@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for src/pagination.tsx</title>
+    <title>Code coverage report for src/routing.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> pagination.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">src</a> routing.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">53.33% </span>
+                <span class="strong">91.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>8/15</span>
+                <span class='fraction'>11/12</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">0% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>0/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/3</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">57.14% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>8/14</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -97,40 +97,24 @@
 <a name='L32'></a><a href='#L32'>32</a>
 <a name='L33'></a><a href='#L33'>33</a>
 <a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a>
-<a name='L38'></a><a href='#L38'>38</a>
-<a name='L39'></a><a href='#L39'>39</a>
-<a name='L40'></a><a href='#L40'>40</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L35'></a><a href='#L35'>35</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">10x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -141,44 +125,45 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Link } from 'react-router-dom'
-import './pagination.css'
-import { useState } from 'react'
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Routes, Route } from 'react-router-dom'
+import { App } from './App'
+import { Page404 } from './Page_404/page_404'
+import { DatailsElement } from './detailsElement'
 &nbsp;
-export function Pagination(args: {
-    serchResult: { results: []; count: number; next: string }
-}) {
-    const [selectBtn, setSelectBtn] = useState(1)
-    const resPagination = []
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (args.serchResult.count &gt; 9) {
-<span class="cstat-no" title="statement not covered" >        for (let i = <span class="cstat-no" title="statement not covered" >0;</span> i &lt; args.serchResult.count / 10; i++) {</span>
-<span class="cstat-no" title="statement not covered" >            if (selectBtn === i + 1) {</span>
-<span class="cstat-no" title="statement not covered" >                resPagination.push(</span>
-                    &lt;Link
-                        to={`/react/page=${i + 1}`}
-                        className="pagination_element  selected_element"
-                        key={`pagination${i + 1}`}
-                        onClick={<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >setSelectBtn(i + 1)}</span>
-                    &gt;
-                        {i + 1}
-                    &lt;/Link&gt;
-                )
-            } else {
-<span class="cstat-no" title="statement not covered" >                resPagination.push(</span>
-                    &lt;Link
-                        to={`/react/page=${i + 1}`}
-                        className="pagination_element"
-                        key={`pagination${i + 1}`}
-                        onClick={<span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >setSelectBtn(i + 1)}</span>
-                    &gt;
-                        {i + 1}
-                    &lt;/Link&gt;
-                )
-            }
-        }
+export function Router() {
+    <span class="missing-if-branch" title="if path not taken" >I</span>if(window.location.href.split('react/')[1] === '' ){
+        // eslint-disable-next-line react-compiler/react-compiler
+<span class="cstat-no" title="statement not covered" >        window.location.href = `${window.location.href}page=1`</span>
     }
-&nbsp;
-    return &lt;div className="pagination_wraper"&gt;{resPagination}&lt;/div&gt;
+    
+    const arrRouting = []
+    for (let i = 1; i &lt; 11; i++) {
+        arrRouting.push(
+            &lt;Route
+                key={`route${i}`}
+                path={`/react/page=${i}`}
+                element={&lt;App page={i} /&gt;}
+            &gt;
+                &lt;Route
+                    path={`/react/page=${i}/datails`}
+                    element={&lt;DatailsElement /&gt;}
+                /&gt;
+            &lt;/Route&gt;
+        )
+    }
+    return (
+        &lt;Routes&gt;
+            &lt;Route path="/react" element={&lt;App /&gt;} /&gt;
+            {arrRouting}
+            &lt;Route path="*" element={&lt;Page404 /&gt;} /&gt;
+        &lt;/Routes&gt;
+    )
 }
 &nbsp;</pre></td></tr></table></pre>
 
@@ -187,7 +172,7 @@ export function Pagination(args: {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-15T11:40:55.567Z
+                at 2024-07-15T11:16:29.386Z
             </div>
         <script src="../prettify.js"></script>
         <script>

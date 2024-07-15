@@ -23,9 +23,9 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">64.51% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>20/31</span>
+                <span class='fraction'>24/30</span>
             </div>
         
             
@@ -37,16 +37,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">14.28% </span>
+                <span class="strong">57.14% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/7</span>
+                <span class='fraction'>4/7</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">66.66% </span>
+                <span class="strong">79.31% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>20/30</span>
+                <span class='fraction'>23/29</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -129,13 +129,11 @@
 <a name='L64'></a><a href='#L64'>64</a>
 <a name='L65'></a><a href='#L65'>65</a>
 <a name='L66'></a><a href='#L66'>66</a>
-<a name='L67'></a><a href='#L67'>67</a>
-<a name='L68'></a><a href='#L68'>68</a>
-<a name='L69'></a><a href='#L69'>69</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L67'></a><a href='#L67'>67</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -153,10 +151,10 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
@@ -172,7 +170,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -189,7 +186,6 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -203,7 +199,7 @@
 import { LoadingOpenClose } from './helpers/loadingOpenClose.tsx'
 import { MainWraper } from './mainWraper.tsx'
 import './searchStyle.css'
-import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
+//import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
 import { RequestHandler } from './APIRequests/RequestHandler.ts'
 import { Pagination } from './pagination.tsx'
 import { Link } from 'react-router-dom'
@@ -220,11 +216,11 @@ export function App({ page = 1 }) {
 <span class="cstat-no" title="statement not covered" >        throw new Error('new Error')</span>
     }
 &nbsp;
-    const APIHandler = <span class="fstat-no" title="function not covered" >(p</span>age: number) =&gt; {
-<span class="cstat-no" title="statement not covered" >        setIsGetAPIRequest(false)</span>
-<span class="cstat-no" title="statement not covered" >        RequestHandler(searchValue, page).then(<span class="fstat-no" title="function not covered" >(j</span>son) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >            setSerchResult(json)</span>
-<span class="cstat-no" title="statement not covered" >            setIsGetAPIRequest(true)</span>
+    const APIHandler = (page: number) =&gt; {
+        setIsGetAPIRequest(false)
+        RequestHandler(searchValue, page).then((json) =&gt; {
+            setSerchResult(json)
+            setIsGetAPIRequest(true)
         })
     }
     <span class="missing-if-branch" title="if path not taken" >I</span>if (page !== curPage) {
@@ -232,9 +228,8 @@ export function App({ page = 1 }) {
 <span class="cstat-no" title="statement not covered" >        APIHandler(page)</span>
     }
 &nbsp;
-    window.addEventListener('load', <span class="fstat-no" title="function not covered" >() =</span>&gt; <span class="cstat-no" title="statement not covered" >APIHandler(curPage))</span>
+    window.addEventListener('load', () =&gt; APIHandler(curPage))
     return (
-        &lt;MyErrorBoundary&gt;
             &lt;div className="root_wraper"&gt;
                 {LoadingOpenClose(isGetAPIRequest)}
                 &lt;div className="search_wraper"&gt;
@@ -264,7 +259,6 @@ export function App({ page = 1 }) {
                 &lt;MainWraper serchResult={JSON.parse(serchResult)} /&gt;
                 &lt;Pagination serchResult={JSON.parse(serchResult)} /&gt;
             &lt;/div&gt;
-        &lt;/MyErrorBoundary&gt;
     )
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -274,7 +268,7 @@ export function App({ page = 1 }) {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-07-15T10:12:57.633Z
+                at 2024-07-15T11:40:55.567Z
             </div>
         <script src="../prettify.js"></script>
         <script>

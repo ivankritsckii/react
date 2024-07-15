@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1721038377669" clover="3.2.0">
-  <project timestamp="1721038377669" name="All files">
-    <metrics statements="94" coveredstatements="58" conditionals="14" coveredconditionals="3" methods="26" coveredmethods="12" elements="134" coveredelements="73" complexity="0" loc="94" ncloc="94" packages="3" files="8" classes="8"/>
+<coverage generated="1721043655595" clover="3.2.0">
+  <project timestamp="1721043655596" name="All files">
+    <metrics statements="84" coveredstatements="63" conditionals="13" coveredconditionals="3" methods="22" coveredmethods="15" elements="119" coveredelements="81" complexity="0" loc="84" ncloc="84" packages="3" files="7" classes="7"/>
     <package name="src">
-      <metrics statements="52" coveredstatements="32" conditionals="7" coveredconditionals="1" methods="13" coveredmethods="3"/>
+      <metrics statements="51" coveredstatements="35" conditionals="7" coveredconditionals="1" methods="13" coveredmethods="6"/>
       <file name="App.tsx" path="C:\Users\BelPharm33\Desktop\Иван\мой файлы\react\проверка_15_07_2\react\start_react\src\App.tsx">
-        <metrics statements="30" coveredstatements="20" conditionals="3" coveredconditionals="1" methods="7" coveredmethods="1"/>
+        <metrics statements="29" coveredstatements="23" conditionals="3" coveredconditionals="1" methods="7" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
         <line num="6" count="1" type="stmt"/>
         <line num="7" count="1" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
@@ -24,25 +23,25 @@
         <line num="18" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="19" count="0" type="stmt"/>
         <line num="22" count="2" type="stmt"/>
-        <line num="23" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="25" count="0" type="stmt"/>
-        <line num="26" count="0" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
         <line num="29" count="2" type="cond" truecount="0" falsecount="1"/>
         <line num="30" count="0" type="stmt"/>
         <line num="31" count="0" type="stmt"/>
         <line num="34" count="2" type="stmt"/>
         <line num="35" count="2" type="stmt"/>
-        <line num="43" count="0" type="stmt"/>
-        <line num="50" count="0" type="stmt"/>
-        <line num="58" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
+        <line num="57" count="0" type="stmt"/>
       </file>
       <file name="mainWraper.tsx" path="C:\Users\BelPharm33\Desktop\Иван\мой файлы\react\проверка_15_07_2\react\start_react\src\mainWraper.tsx">
         <metrics statements="8" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="5" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="6" count="0" type="stmt"/>
         <line num="8" count="0" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
@@ -54,60 +53,48 @@
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
         <line num="5" count="1" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
-        <line num="9" count="2" type="stmt"/>
-        <line num="10" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="11" count="0" type="stmt"/>
         <line num="12" count="0" type="cond" truecount="0" falsecount="2"/>
         <line num="13" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
         <line num="29" count="0" type="stmt"/>
-        <line num="38" count="2" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.APIRequests">
-      <metrics statements="19" coveredstatements="4" conditionals="3" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <metrics statements="19" coveredstatements="15" conditionals="3" coveredconditionals="1" methods="4" coveredmethods="4"/>
       <file name="APIRequest.ts" path="C:\Users\BelPharm33\Desktop\Иван\мой файлы\react\проверка_15_07_2\react\start_react\src\APIRequests\APIRequest.ts">
-        <metrics statements="9" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="2" count="0" type="stmt"/>
-        <line num="3" count="0" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="11" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
         <line num="16" count="0" type="stmt"/>
         <line num="17" count="0" type="stmt"/>
-        <line num="19" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
       </file>
       <file name="RequestHandler.ts" path="C:\Users\BelPharm33\Desktop\Иван\мой файлы\react\проверка_15_07_2\react\start_react\src\APIRequests\RequestHandler.ts">
-        <metrics statements="10" coveredstatements="3" conditionals="3" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <metrics statements="10" coveredstatements="8" conditionals="3" coveredconditionals="1" methods="3" coveredmethods="3"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
-        <line num="5" count="0" type="stmt"/>
-        <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="7" count="0" type="stmt"/>
-        <line num="8" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="9" count="0" type="stmt"/>
         <line num="10" count="0" type="stmt"/>
-        <line num="12" count="0" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.helpers">
-      <metrics statements="23" coveredstatements="22" conditionals="4" coveredconditionals="2" methods="9" coveredmethods="9"/>
-      <file name="errorHeandlet.tsx" path="C:\Users\BelPharm33\Desktop\Иван\мой файлы\react\проверка_15_07_2\react\start_react\src\helpers\errorHeandlet.tsx">
-        <metrics statements="9" coveredstatements="9" conditionals="1" coveredconditionals="1" methods="4" coveredmethods="4"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="2" type="stmt"/>
-        <line num="16" count="2" type="stmt"/>
-        <line num="20" count="1" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="25" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="33" count="2" type="stmt"/>
-      </file>
+      <metrics statements="14" coveredstatements="13" conditionals="3" coveredconditionals="1" methods="5" coveredmethods="5"/>
       <file name="loadingOpenClose.tsx" path="C:\Users\BelPharm33\Desktop\Иван\мой файлы\react\проверка_15_07_2\react\start_react\src\helpers\loadingOpenClose.tsx">
         <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
@@ -117,13 +104,13 @@
       <file name="useLS.ts" path="C:\Users\BelPharm33\Desktop\Иван\мой файлы\react\проверка_15_07_2\react\start_react\src\helpers\useLS.ts">
         <metrics statements="11" coveredstatements="10" conditionals="1" coveredconditionals="0" methods="4" coveredmethods="4"/>
         <line num="1" count="1" type="stmt"/>
-        <line num="4" count="2" type="stmt"/>
-        <line num="5" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="6" count="0" type="stmt"/>
-        <line num="8" count="2" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="2" type="stmt"/>
-        <line num="13" count="2" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="16" count="2" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
         <line num="20" count="2" type="stmt"/>

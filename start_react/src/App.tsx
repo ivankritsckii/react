@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { LoadingOpenClose } from './helpers/loadingOpenClose.tsx'
 import { MainWraper } from './mainWraper.tsx'
 import './searchStyle.css'
-import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
+//import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
 import { RequestHandler } from './APIRequests/RequestHandler.ts'
 import { Pagination } from './pagination.tsx'
 import { Link } from 'react-router-dom'
@@ -33,7 +33,6 @@ export function App({ page = 1 }) {
 
     window.addEventListener('load', () => APIHandler(curPage))
     return (
-        <MyErrorBoundary>
             <div className="root_wraper">
                 {LoadingOpenClose(isGetAPIRequest)}
                 <div className="search_wraper">
@@ -63,6 +62,5 @@ export function App({ page = 1 }) {
                 <MainWraper serchResult={JSON.parse(serchResult)} />
                 <Pagination serchResult={JSON.parse(serchResult)} />
             </div>
-        </MyErrorBoundary>
     )
 }
