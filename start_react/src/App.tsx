@@ -1,25 +1,32 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { LoadingOpenClose } from './helpers/loadingOpenClose.tsx'
 import { MainWraper } from './mainWraper.tsx'
 import './searchStyle.css'
 //import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
-import { RequestHandler } from './APIRequests/RequestHandler.ts'
+//import { RequestHandler } from './APIRequests/RequestHandler.ts'
 import { Pagination } from './pagination.tsx'
 import { Link } from 'react-router-dom'
 import { useLocalStorage } from './helpers/useLS.ts'
+import {useGetTodosQuery} from "./APIRequests/sliceAPI"
 
 export function App({ page = 1 }) {
     const [searchValue, setSearchValue] = useLocalStorage('searchValue', '')
-    const [curPage, setCurPage] = useState(page)
+    const [curSearchValue, setCurSearchValue] = useLocalStorage('searchValue', '')
     const [serchResult, setSerchResult] = useState('{}')
-    const [isGetAPIRequest, setIsGetAPIRequest] = useState(true)
     const [isError, setIsError] = useState(false)
+
+    const {
+        data: todos,
+        isLoading,
+        isSuccess,
+    } = useGetTodosQuery({searchValue: curSearchValue, page: page});
+    console.log(isSuccess)
 
     if (isError) {
         throw new Error('new Error')
     }
 
-    const APIHandler = (page: number) => {
+    /*const APIHandler = (page: number) => {
         setIsGetAPIRequest(false)
         RequestHandler(searchValue, page).then((json) => {
             setSerchResult(json)
@@ -29,12 +36,14 @@ export function App({ page = 1 }) {
     if (page !== curPage) {
         setCurPage(page)
         APIHandler(page)
-    }
-
-    window.addEventListener('load', () => APIHandler(curPage))
+    }*/
+    useEffect(() => {
+        if(todos) setSerchResult(todos)
+    }, [todos])
+    //window.addEventListener('load', () => APIHandler(curPage))
     return (
             <div className="root_wraper">
-                {LoadingOpenClose(isGetAPIRequest)}
+                {LoadingOpenClose(!isLoading && isSuccess)}
                 <div className="search_wraper">
                     <input
                         value={searchValue}
@@ -46,7 +55,7 @@ export function App({ page = 1 }) {
                         <button
                             className="search_btn"
                             onClick={() => {
-                                APIHandler(1)
+                                setCurSearchValue(searchValue)
                             }}
                         >
                             Search
@@ -59,8 +68,8 @@ export function App({ page = 1 }) {
                         Throw an error
                     </button>
                 </div>
-                <MainWraper serchResult={JSON.parse(serchResult)} />
-                <Pagination serchResult={JSON.parse(serchResult)} />
+                <MainWraper todos = {todos} />
+                <Pagination serchResult={JSON.parse(JSON.stringify(serchResult))} />
             </div>
     )
 }
