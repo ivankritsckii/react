@@ -4,17 +4,19 @@ import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { Router } from './routing.tsx'
 
-import { ApiProvider } from "@reduxjs/toolkit/query/react";
-import { apiSlice } from "./APIRequests/sliceAPI.ts";
+/*import { ApiProvider } from "@reduxjs/toolkit/query/react";
+import { apiSlice } from "./APIRequests/sliceAPI.ts";*/
+import { Provider } from 'react-redux'
+import { store } from './tookitRedux/index.ts'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <MyErrorBoundary>
-            < ApiProvider api={apiSlice}>
+            < Provider store={store}>
                  <BrowserRouter>
                     <Router />
                 </BrowserRouter>
-            </ApiProvider>
+            </Provider>
         </MyErrorBoundary>
     </React.StrictMode>
 )

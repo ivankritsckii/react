@@ -2,45 +2,47 @@ import { useState, useEffect } from 'react'
 import { LoadingOpenClose } from './helpers/loadingOpenClose.tsx'
 import { MainWraper } from './mainWraper.tsx'
 import './searchStyle.css'
-//import { MyErrorBoundary } from './helpers/errorHeandlet.tsx'
-//import { RequestHandler } from './APIRequests/RequestHandler.ts'
 import { Pagination } from './pagination.tsx'
 import { Link } from 'react-router-dom'
 import { useLocalStorage } from './helpers/useLS.ts'
 import {useGetTodosQuery} from "./APIRequests/sliceAPI"
+import { addPage, setCurPage } from './tookitRedux/toolKitSlice.ts'
+import { useDispatch, useSelector } from 'react-redux'
 
 export function App({ page = 1 }) {
     const [searchValue, setSearchValue] = useLocalStorage('searchValue', '')
     const [curSearchValue, setCurSearchValue] = useLocalStorage('searchValue', '')
     const [serchResult, setSerchResult] = useState('{}')
     const [isError, setIsError] = useState(false)
+    const dispatch = useDispatch();
+    
 
     const {
         data: todos,
         isLoading,
         isSuccess,
     } = useGetTodosQuery({searchValue: curSearchValue, page: page});
-    console.log(isSuccess)
-
+   
+   
+    const state = useSelector((state:{toolkit:{curPage:number, pages:[]}}) => {
+        const curPage = state.toolkit.curPage;
+        return state.toolkit.pages[curPage]
+    });
     if (isError) {
         throw new Error('new Error')
     }
 
-    /*const APIHandler = (page: number) => {
-        setIsGetAPIRequest(false)
-        RequestHandler(searchValue, page).then((json) => {
-            setSerchResult(json)
-            setIsGetAPIRequest(true)
-        })
-    }
-    if (page !== curPage) {
-        setCurPage(page)
-        APIHandler(page)
-    }*/
     useEffect(() => {
-        if(todos) setSerchResult(todos)
+        if(todos) {
+            dispatch(addPage({pageInfo:todos, pageNum: page, searchReq:searchValue}));
+            dispatch(setCurPage(`searchReq:${searchValue} pageNum:${page}`))
+        }
     }, [todos])
-    //window.addEventListener('load', () => APIHandler(curPage))
+    
+    useEffect(() => {
+        if(state) {setSerchResult(state);
+        }
+    }, [state])
     return (
             <div className="root_wraper">
                 {LoadingOpenClose(!isLoading && isSuccess)}
@@ -55,7 +57,7 @@ export function App({ page = 1 }) {
                         <button
                             className="search_btn"
                             onClick={() => {
-                                setCurSearchValue(searchValue)
+                                setCurSearchValue(searchValue);
                             }}
                         >
                             Search
@@ -68,7 +70,7 @@ export function App({ page = 1 }) {
                         Throw an error
                     </button>
                 </div>
-                <MainWraper todos = {todos} />
+                <MainWraper state = {state} />
                 <Pagination serchResult={JSON.parse(JSON.stringify(serchResult))} />
             </div>
     )

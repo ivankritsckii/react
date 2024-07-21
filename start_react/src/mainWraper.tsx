@@ -6,15 +6,15 @@ interface todo {
     results: {
         name: string, 
         height: string,
-        mass: string
+        mass: string,
+        isActive: boolean
     }[]
 }
 
-export function MainWraper(args: { todos: todo}) {
-
-    if (args.todos && args.todos.results) {
-        const searchList = args.todos.results.map(
-            (item: { name: string; height: string; mass: string }) => {
+export function MainWraper(args: { state: todo}) {
+    if (args.state && args.state.results) {
+        const searchList = args.state.results.map(
+            (item) => {
                 return (
                     <Link
                         to={`${window.location.href.split('/datails')[0]}/datails`}
@@ -34,7 +34,10 @@ export function MainWraper(args: { todos: todo}) {
                                 Height: {item.height}
                             </div>
                             <div className="card_mass">Mass: {item.mass}</div>
-                            <CheckBox />
+                            <CheckBox obj = {{
+                                isActive: item.isActive, 
+                                name: item.name,
+                                }}/>
                         </div>
                     </Link>
                 )
