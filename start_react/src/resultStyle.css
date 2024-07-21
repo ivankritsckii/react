@@ -1,6 +1,6 @@
 .result_window_wraper{
     display: flex;
-    gap: 20px;
+    gap: 10px;
     flex-wrap: wrap;
     justify-content: center;
 }
@@ -21,7 +21,7 @@
     font-weight: bold;
 }
 .search_value_wraper{
-    width: 50vw;
+    width: 400px;
     background-color: rgb(255, 255, 229);
     display: flex;
     gap: 20px;
@@ -43,7 +43,7 @@
     font-weight: bold;
 }
 .details_wraper{
-    width: 40vw;
+    width: 295px;
     height: 50vh;
     background-color: rgb(192, 138, 242);
     display: flex;
@@ -55,4 +55,27 @@
     width: 20px;
     height: 20px;
     cursor: cell;
+}
+
+.detail_selected_wraper{
+    width: 130px;
+    height: 200px;
+    background-color: rgb(192, 138, 242);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+.btns_wraper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.count_selected_element{
+    font-weight: bold;
+}
+.empty{
+    background: white;
 }

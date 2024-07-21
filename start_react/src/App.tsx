@@ -5,7 +5,7 @@ import './searchStyle.css'
 import { Pagination } from './pagination.tsx'
 import { Link } from 'react-router-dom'
 import { useLocalStorage } from './helpers/useLS.ts'
-import {useGetTodosQuery} from "./APIRequests/sliceAPI"
+import { useGetTodosQuery } from "./APIRequests/sliceAPI"
 import { addPage, setCurPage } from './tookitRedux/toolKitSlice.ts'
 import { useDispatch, useSelector } from 'react-redux'
 
@@ -38,7 +38,7 @@ export function App({ page = 1 }) {
             dispatch(setCurPage(`searchReq:${searchValue} pageNum:${page}`))
         }
     }, [todos])
-    
+
     useEffect(() => {
         if(state) {setSerchResult(state);
         }
@@ -70,7 +70,7 @@ export function App({ page = 1 }) {
                         Throw an error
                     </button>
                 </div>
-                <MainWraper state = {state} />
+                <MainWraper />
                 <Pagination serchResult={JSON.parse(JSON.stringify(serchResult))} />
             </div>
     )
