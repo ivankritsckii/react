@@ -5,7 +5,7 @@ const TKSlice = createSlice({
     initialState: {
         count: 0,
         pages:{'a': 'ff'},
-        selectedEl:[''],
+        selectedEl:[{'name':''}],
         curPage:'',
     },
     reducers:{
@@ -22,10 +22,10 @@ const TKSlice = createSlice({
         },
         deSelectElement(state,action) {
             console.log(action)
-            state.selectedEl = state.selectedEl.filter(item => item !== action.payload)
+            state.selectedEl = state.selectedEl.filter(item => item.name !== action.payload.name)
         },
         deselectAll(state) {
-            state.selectedEl = ['']
+            state.selectedEl = [{'name':''}]
         },
     }
 })
