@@ -3,6 +3,8 @@ import { Link, Outlet } from 'react-router-dom'
 import { CheckBox } from './helpers/checkbox';
 import { DetailSelected } from './detailSelected' 
 import { useSelector } from 'react-redux';
+import { useContext } from 'react';
+import { ThemeContent } from './helpers/themeChanger.tsx'
 
 interface todo {
     count:number,
@@ -15,6 +17,7 @@ interface todo {
 }
 
 export function MainWraper() {
+    const {isdarkMode}= useContext(ThemeContent)
     const curState: todo = useSelector((state:{toolkit:{curPage:number, pages:[]}}) => {
         const curPage = state.toolkit.curPage;
         return state.toolkit.pages[curPage]
@@ -50,7 +53,7 @@ export function MainWraper() {
             }
         )
         return (
-            <div className="result_window_wraper">
+            <div className={isdarkMode ? 'result_window_wraper' : 'result_window_wraper result_window_wraper_dark'}>
                 <DetailSelected />
                 <Link to={window.location.href.split('datails')[0]}>
                     <div

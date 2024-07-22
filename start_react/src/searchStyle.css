@@ -7,6 +7,9 @@
     align-items: center;
     gap: 20px;
 }
+.search_wraper_dark{
+  background-color: #535353;
+}
 .search_input{
     width: 350px;
     height: 30px;
@@ -23,11 +26,18 @@ button {
     cursor: pointer;
     transition: border-color 0.25s;
   }
+.button_dark {
+  background-color: #838383;
+  color: white;
+  }
   button:hover {
     border-color: #646cff;
   }
   .error_btn{
     background-color: rgb(252, 139, 139);
+  }
+  .error_btn_dark{
+    background-color: rgb(223, 89, 89);
   }
   .loading{
     position: fixed;
@@ -47,6 +57,38 @@ button {
     font-size: 32px;
     text-align: center;
     font-weight: bold;
+  }
+  .switch-btn {
+    display: inline-block;
+    width: 72px; /* ширина */
+    height: 38px; /* высота */
+    border-radius: 19px; /* радиус скругления */
+    background: #bfbfbf; /* цвет фона */
+    z-index: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition-duration: 300ms; /* анимация */
+  }
+  .switch-btn::after {
+    content: "";
+    height: 32px; /* высота кнопки */
+    width: 32px; /* ширина кнопки */
+    border-radius: 17px;
+    background: #fff; /* цвет кнопки */
+    top: 3px; /* положение кнопки по вертикали относительно основы */
+    left: 3px; /* положение кнопки по горизонтали относительно основы */
+    transition-duration: 300ms; /* анимация */
+    position: absolute;
+    z-index: 1;
+  }
+  .switch-on {
+    background: #118c4e;
+  }
+  .switch-on::after {
+    left: 37px;
   }
   
   @media (prefers-color-scheme: light) {

@@ -2,20 +2,19 @@ import './resultStyle.css'
 import { useSelector, useDispatch } from 'react-redux'
 import { deselectAll } from './tookitRedux/toolKitSlice'
 import { exportToCsv } from './helpers/fileSaver'
+import { useContext } from 'react';
+import { ThemeContent } from './helpers/themeChanger.tsx'
 
 export function DetailSelected () {
+    const {isdarkMode}= useContext(ThemeContent)
+    console.log(isdarkMode)
     const dispatch = useDispatch();
     const state = useSelector((state:{toolkit:{curPage:number, pages:[], selectedEl:[]}}) => {
         return state.toolkit
     });
-    const state2 = useSelector((state:{toolkit:{curPage:number, pages:[], selectedEl:[]}}) => {
-        return state
-    });
-    console.log(state2)
     if(state.selectedEl.length - 1 > 0) {
         return(
-            
-        <div className="detail_selected_wraper">
+        <div className={isdarkMode ? "detail_selected_wraper" : "detail_selected_wraper_dark"}>
             <div className="selected_text">Selected element:</div>
             <div className="count_selected_element">{state.selectedEl.length - 1}</div>
             <div className="btns_wraper">
