@@ -1,10 +1,12 @@
 import './resultStyle.css'
 import { Link } from 'react-router-dom'
 import { detailsRequestHandler } from './APIRequests/detailsRequestHandler'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { LoadingOpenClose } from './helpers/loadingOpenClose'
+import { ThemeContent } from './helpers/themeChanger.tsx'
 
 export function DatailsElement() {
+    const {isdarkMode}= useContext(ThemeContent)
     const [isGetAPIRequest, setIsGetAPIRequest] = useState(true)
     const characterDef = [
         {
@@ -30,7 +32,7 @@ export function DatailsElement() {
     }, [current])
     const [character, setCharacter] = useState(characterDef)
     return (
-        <div className="details_wraper">
+        <div className={isdarkMode ? "details_wraper" : "details_wraper detail_dark"}>
             {LoadingOpenClose(isGetAPIRequest)}
             <div className="details_titel">Detailed information</div>
             <div className="details_name">Name: {character[0].name}</div>

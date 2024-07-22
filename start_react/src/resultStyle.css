@@ -20,6 +20,10 @@
     gap: 5px;
     text-align: center;
 }
+.card_dark{
+    background-color: rgb(83, 83, 97);
+    color: white;
+}
 .card_name{
     font-weight: bold;
 }
@@ -74,8 +78,9 @@
     text-align: center;
     gap: 10px;
 }
-.detail_selected_wraper_dark{
-    background-color: rgb(155, 155, 153);
+.detail_dark{
+    background-color: rgb(90, 96, 143);
+    color: white;
 }
 .btns_wraper{
     display: flex;
@@ -87,4 +92,5 @@
 }
 .empty{
     background: white;
+    background-color: rgb(155, 155, 153, 0);
 }

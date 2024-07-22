@@ -7,14 +7,13 @@ import { ThemeContent } from './helpers/themeChanger.tsx'
 
 export function DetailSelected () {
     const {isdarkMode}= useContext(ThemeContent)
-    console.log(isdarkMode)
     const dispatch = useDispatch();
     const state = useSelector((state:{toolkit:{curPage:number, pages:[], selectedEl:[]}}) => {
         return state.toolkit
     });
     if(state.selectedEl.length - 1 > 0) {
         return(
-        <div className={isdarkMode ? "detail_selected_wraper" : "detail_selected_wraper_dark"}>
+        <div className={isdarkMode ? "detail_selected_wraper" : "detail_selected_wraper detail_dark"}>
             <div className="selected_text">Selected element:</div>
             <div className="count_selected_element">{state.selectedEl.length - 1}</div>
             <div className="btns_wraper">
@@ -25,7 +24,7 @@ export function DetailSelected () {
     )
     } else{
         return(
-            <div className="detail_selected_wraper empty"></div>
+            <div className={isdarkMode ? "detail_selected_wraper empty" : "detail_selected_wraper empty detail_dark"}></div>
         )
     }
     

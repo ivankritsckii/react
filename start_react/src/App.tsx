@@ -14,16 +14,14 @@ export function App({ page = 1 }) {
     const [searchValue, setSearchValue] = useLocalStorage('searchValue', '')
     const [curSearchValue, setCurSearchValue] = useLocalStorage('searchValue', '')
     const [serchResult, setSerchResult] = useState('{}')
-    const [isError, setIsError] = useState(false)
+    const [isError, setIsError] = useState(false);
+    const {isdarkMode, toggleDarkMode}= useContext(ThemeContent);
     const dispatch = useDispatch();
-    const {isdarkMode, toggleDarkMode}= useContext(ThemeContent)
 
     const {
         data: todos,
-        isLoading,
         isSuccess,
     } = useGetTodosQuery({searchValue: curSearchValue, page: page});
-   
    
     const state = useSelector((state:{toolkit:{curPage:number, pages:[]}}) => {
         const curPage = state.toolkit.curPage;
@@ -37,7 +35,7 @@ export function App({ page = 1 }) {
     useEffect(() => {
         if(todos) {
             dispatch(addPage({pageInfo:todos, pageNum: page, searchReq:searchValue}));
-            dispatch(setCurPage(`searchReq:${searchValue} pageNum:${page}`))
+            dispatch(setCurPage(`searchReq:${searchValue} pageNum:${page}`));
         }
     }, [todos])
 
@@ -47,7 +45,7 @@ export function App({ page = 1 }) {
     }, [state])
     return (
             <div className="root_wraper">
-                {LoadingOpenClose(!isLoading && isSuccess)}
+                {LoadingOpenClose(isSuccess)}
                 <div className={isdarkMode ? "search_wraper search_wraper_dark" : "search_wraper"}>
                     <input
                         value={searchValue}
@@ -71,7 +69,7 @@ export function App({ page = 1 }) {
                     >
                         Throw an error
                     </button>
-                    <div className={isdarkMode ? 'switch-btn switch-on' : 'switch-btn'}onClick={() => toggleDarkMode()}></div>
+                    <div className={isdarkMode ? 'switch-btn switch-on' : 'switch-btn'} onClick={() => toggleDarkMode()}></div>
                 </div>
                 <MainWraper />
                 <Pagination serchResult={JSON.parse(JSON.stringify(serchResult))} />

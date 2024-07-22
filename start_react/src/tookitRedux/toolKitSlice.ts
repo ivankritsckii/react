@@ -4,7 +4,7 @@ const TKSlice = createSlice({
     name: "toolkit",
     initialState: {
         count: 0,
-        pages:{'a': 'ff'},
+        pages:{name: '5'},
         selectedEl:[{'name':''}],
         curPage:'',
     },

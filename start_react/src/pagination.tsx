@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import './pagination.css'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
+import { ThemeContent } from './helpers/themeChanger.tsx'
 
 export function Pagination(args: {
     serchResult: { results: []; count: number; next: string }
 }) {
+    const {isdarkMode}= useContext(ThemeContent)
     const [selectBtn, setSelectBtn] = useState(1)
     const resPagination = []
     if (args.serchResult.count > 9) {
@@ -35,5 +37,5 @@ export function Pagination(args: {
         }
     }
 
-    return <div className="pagination_wraper">{resPagination}</div>
+    return <div className={isdarkMode ? 'pagination_wraper' : 'pagination_wraper pagination_dark'}>{resPagination}</div>
 }

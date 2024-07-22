@@ -5,16 +5,7 @@ import { DetailSelected } from './detailSelected'
 import { useSelector } from 'react-redux';
 import { useContext } from 'react';
 import { ThemeContent } from './helpers/themeChanger.tsx'
-
-interface todo {
-    count:number,
-    results: {
-        name: string, 
-        height: string,
-        mass: string,
-        isActive: boolean
-    }[]
-}
+import { todo } from './interfaces/todoInterface.ts'
 
 export function MainWraper() {
     const {isdarkMode}= useContext(ThemeContent)
@@ -31,7 +22,7 @@ export function MainWraper() {
                         key={item.name}
                     >
                         <div
-                            className="card_wraper"
+                            className={isdarkMode ? 'card_wraper': 'card_wraper card_dark'}
                             onClick={() => {
                                 localStorage.setItem(
                                     'current_caracter_name',

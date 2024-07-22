@@ -1,5 +1,5 @@
 .search_wraper{
-    width: 100vw;
+    width: calc(100vw - 16px);
     height: 150px;
     background-color: #b2b2b2;
     display: flex;

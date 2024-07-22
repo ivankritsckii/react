@@ -7,7 +7,7 @@ export function CheckBox (obj: {obj: {name:string}}) {
     const selectedArr = useSelector((state:{toolkit:{selectedEl:[]}}) => {
       return state.toolkit.selectedEl
   });
-  const curObj = useSelector((state:{toolkit:{curPage:string, pages:[]}}) => {
+  const curObj = useSelector((state:{toolkit:{curPage:number, pages:{results:[]}[]}}) => {
     const curPage = state.toolkit.curPage;
     const resultsArr = state.toolkit.pages[curPage].results;
     let index = -1;
@@ -20,7 +20,8 @@ export function CheckBox (obj: {obj: {name:string}}) {
 
     const [checked, setChecked] = React.useState(() => {
       for(let i = 0; i < selectedArr.length; i++) {
-        if(selectedArr[i].name === obj.obj.name) {
+        const item = selectedArr[i] as {name:string}
+        if(item.name === obj.obj.name) {
           return true
         }
       }
@@ -29,13 +30,14 @@ export function CheckBox (obj: {obj: {name:string}}) {
     useEffect(() => {
       setChecked(() => {
         for(let i = 0; i < selectedArr.length; i++) {
-          if(selectedArr[i].name === obj.obj.name) {
+          const item = selectedArr[i] as {name:string}
+          if(item.name === obj.obj.name) {
             return true
           }
         }
         return false
       })
-    }, [selectedArr])
+    }, [selectedArr, obj.obj.name])
 
 
     function handleClick(e:React.MouseEvent<HTMLInputElement, MouseEvent>) {
