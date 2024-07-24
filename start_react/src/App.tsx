@@ -22,6 +22,7 @@ export function App({ page = 1 }) {
         data: todos,
         isSuccess,
     } = useGetTodosQuery({searchValue: curSearchValue, page: page});
+    console.log(todos)
    
     const state = useSelector((state:{toolkit:{curPage:number, pages:[]}}) => {
         const curPage = state.toolkit.curPage;
@@ -48,6 +49,7 @@ export function App({ page = 1 }) {
                 {LoadingOpenClose(isSuccess)}
                 <div className={isdarkMode ? "search_wraper search_wraper_dark" : "search_wraper"}>
                     <input
+                    
                         value={searchValue}
                         onChange={(e) => {
                             setSearchValue(e.target.value)
