@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+interface state {
+    pages:{
+        [key: string]: string;}
+}
+
 const TKSlice = createSlice({
     name: "toolkit",
     initialState: {
@@ -9,8 +14,8 @@ const TKSlice = createSlice({
         curPage:'',
     },
     reducers:{
-        addPage(state,actions) {
-            const name = `searchReq:${actions.payload.searchReq} pageNum:${actions.payload.pageNum}`
+        addPage(state: state, actions) {
+        const name = `searchReq:${actions.payload.searchReq} pageNum:${actions.payload.pageNum}`
             if(!(name in state.pages)) state.pages[name] = actions.payload.pageInfo
         },
         setCurPage(state, actions) {
