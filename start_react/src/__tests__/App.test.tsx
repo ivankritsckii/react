@@ -6,8 +6,9 @@ import { ThemeProvider } from '../helpers/themeChanger.tsx'
 import { store } from '../tookitRedux/index.ts'
 import { App } from '../App';
 import { vi } from 'vitest';
-import {  delay } from 'msw'
-
+import { Page404 } from '../Page_404/page_404'
+import { MyErrorBoundary } from '../helpers/errorHeandlet.tsx'
+//import {  delay } from 'msw'
 
 const setup = async (LSvalue: string | null = null) => {
   if (LSvalue !== null) {
@@ -65,16 +66,65 @@ describe('App component', () => {
 
   test('handles successful fetch and displays results', async () => {
     await setup("R2");
-
-    await delay(1000)
-
-      expect(screen.getByText(/R2-D2/i)).toBeInTheDocument();
+    expect(await screen.findByText(/R2-D2/i)).toBeInTheDocument();
   });
+
   test('setch window', async () => {
     await setup();
     const searchInput = screen.getByRole('textbox');
     fireEvent.change(searchInput, {target: { value: "test value"}})
 
-      expect(screen.getByText(/test value/i)).toBeInTheDocument();
+      expect(screen.getByDisplayValue(/test value/i)).toBeInTheDocument();
   });
+  test('click on search', async () => {
+    await setup();
+    const searchInput = screen.getByRole('textbox');
+    const searchBtn = screen.getByText(/Search/i)
+    fireEvent.change(searchInput, {target: { value: "test value"}});
+    fireEvent.click(searchBtn)
+    expect(searchInput).toHaveValue("test value");
+  });
+
+  test('click on checkbox', async () => {
+    await setup('r2');
+    const checkbox = screen.getByRole('checkbox');
+    fireEvent.click(checkbox);
+    expect(checkbox).toBeChecked()
+  });
+  test('error page', async () => {
+    render(
+      < Provider store={store}>
+                 <ThemeProvider>
+      <BrowserRouter>
+        <Page404 />
+      </BrowserRouter>
+      </ThemeProvider>
+      </Provider>,
+        
+    );
+    expect(screen.getByText(/Page not found/i)).toBeInTheDocument()
+    screen.debug()
+  });
+
+  const ProblematicComponent = () => {
+    throw new Error('Test error');
+  };
+  it('renders children when no error occurs', () => {
+    render(
+      <MyErrorBoundary>
+        <div>Child component</div>
+      </MyErrorBoundary>,
+    );
+    expect(screen.getByText('Child component')).toBeInTheDocument();
+  });
+
+  it('displays fallback UI when an error is caught', () => {
+    render(
+      <MyErrorBoundary>
+        <ProblematicComponent />
+      </MyErrorBoundary>,
+    );
+    expect(screen.getByText('Something went wrong. Please reload the page or contact support')).toBeInTheDocument();
+  });
+
 });

@@ -49,7 +49,7 @@ export function App({ page = 1 }) {
                 {LoadingOpenClose(isSuccess)}
                 <div className={isdarkMode ? "search_wraper search_wraper_dark" : "search_wraper"}>
                     <input
-                    
+                    placeholder='Search character'
                         value={searchValue}
                         onChange={(e) => {
                             setSearchValue(e.target.value)
