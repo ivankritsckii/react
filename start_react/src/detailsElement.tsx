@@ -1,13 +1,17 @@
 import './resultStyle.css'
 import { Link } from 'react-router-dom'
-import { detailsRequestHandler } from './APIRequests/detailsRequestHandler'
 import { useState, useEffect, useContext } from 'react'
-import { LoadingOpenClose } from './helpers/loadingOpenClose'
 import { ThemeContent } from './helpers/themeChanger.tsx'
+import { useSelector } from 'react-redux'
 
 export function DatailsElement() {
+
+    const curState = useSelector((state:{toolkit:{curPage:number, pages:{results:[]}[]}}) => {
+        const curPage = state.toolkit.curPage;
+        return state.toolkit.pages[curPage].results
+    });
+    console.log(curState)
     const {isdarkMode}= useContext(ThemeContent)
-    const [isGetAPIRequest, setIsGetAPIRequest] = useState(true)
     const characterDef = [
         {
             name: 'def',
@@ -23,17 +27,12 @@ export function DatailsElement() {
     const current = localStorage.getItem('current_caracter_name')
     useEffect(() => {
         if (current) {
-            setIsGetAPIRequest(false)
-            detailsRequestHandler(current).then((json) => {
-                setCharacter(JSON.parse(json).results)
-                setIsGetAPIRequest(true)
-            })
+            setCharacter(curState.filter((item: {name: string}) => item.name === localStorage.getItem('current_caracter_name')))
         }
     }, [current])
     const [character, setCharacter] = useState(characterDef)
     return (
         <div className={isdarkMode ? "details_wraper" : "details_wraper detail_dark"}>
-            {LoadingOpenClose(isGetAPIRequest)}
             <div className="details_titel">Detailed information</div>
             <div className="details_name">Name: {character[0].name}</div>
             <div className="details_name">Height: {character[0].height}</div>

@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act, waitFor } from '@testing-library/react';
+import { render, screen,  act, fireEvent } from '@testing-library/react';
 export * from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
@@ -6,26 +6,12 @@ import { ThemeProvider } from '../helpers/themeChanger.tsx'
 import { store } from '../tookitRedux/index.ts'
 import { App } from '../App';
 import { vi } from 'vitest';
+import {  delay } from 'msw'
 
 
-const mockFetch = (
-  response: {
-    results: Array<{name: string; height: string; mass: string }>;
-  },
-  reject: boolean = false,
-) => {
-  global.fetch = vi.fn(() =>
-    reject
-      ? Promise.reject(new Error('Fetch error'))
-      : Promise.resolve({
-          json: () => Promise.resolve(response),
-        } as Response),
-  );
-};
-
-const setup = async (initialLocalStorageTerm: string | null = null) => {
-  if (initialLocalStorageTerm !== null) {
-    localStorage.setItem('searchValue', initialLocalStorageTerm);
+const setup = async (LSvalue: string | null = null) => {
+  if (LSvalue !== null) {
+    localStorage.setItem('searchValue', LSvalue);
   } else {
     localStorage.removeItem('searchValue');
   }
@@ -77,45 +63,18 @@ describe('App component', () => {
     expect(searchInput).toHaveValue(testTerm);
   });
 
-  /*test('displays error message when fetch fails', async () => {
-    mockFetch({ results: [] }, true);
-
-    await setup();
-
-    const searchInput = screen.getByRole('textbox');
-    const searchButton = screen.getByText(/search/i);
-
-    await act(async () => {
-      fireEvent.change(searchInput, { target: { value: 'test' } });
-      fireEvent.click(searchButton);
-    });
-
-    await waitFor(() => expect(screen.getByText(/error: fetch error/i)).toBeInTheDocument());
-  });*/
-
   test('handles successful fetch and displays results', async () => {
-    const mockData = {
-      results: [
-        { name: "First name", height: "175", mass: "55" },
-        { name: "Second name", height: "75", mass: "5"  },
-      ],
-    };
-    mockFetch(mockData);
+    await setup("R2");
 
+    await delay(1000)
+
+      expect(screen.getByText(/R2-D2/i)).toBeInTheDocument();
+  });
+  test('setch window', async () => {
     await setup();
-
     const searchInput = screen.getByRole('textbox');
-    const searchButton = screen.getByText(/Search/i);
-    console.log(searchButton, "ghjghjfjtuityuiuyjhj")
+    fireEvent.change(searchInput, {target: { value: "test value"}})
 
-    await act(async () => {
-      fireEvent.change(searchInput, { target: { value: 'test' } });
-      fireEvent.click(searchButton);
-    });
-
-    await waitFor(() => {
-      expect(screen.getByText('First name')).toBeInTheDocument();
-      expect(screen.getByText('Search')).toBeInTheDocument();
-    });
+      expect(screen.getByText(/test value/i)).toBeInTheDocument();
   });
 });
