@@ -35,7 +35,7 @@ export function DatailsElement() {
                 )
             )
         }
-    }, [current])
+    }, [current, curState])
     const [character, setCharacter] = useState(characterDef)
     return (
         <div

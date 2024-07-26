@@ -89,11 +89,9 @@ describe('App component', () => {
         const checkbox = await screen.findByRole('checkbox')
         fireEvent.click(checkbox)
         expect(checkbox).toBeChecked()
-        const download = await screen.findByText(/download/i);
+        const download = await screen.findByText(/download/i)
         fireEvent.click(download)
     })
-
-
 
     test('error page', async () => {
         render(
@@ -135,7 +133,7 @@ describe('App component', () => {
     })
 
     test('change theme', async () => {
-        const { container } =  render(
+        const { container } = render(
             <Provider store={store}>
                 <ThemeProvider>
                     <BrowserRouter>
@@ -144,13 +142,8 @@ describe('App component', () => {
                 </ThemeProvider>
             </Provider>
         )
-        const switchBtn = container.querySelector('.switch-btn');
-        if(switchBtn) fireEvent.click(switchBtn)
-        expect(
-            screen.getByText(
-                /search/i
-            )
-        ).toBeInTheDocument()
+        const switchBtn = container.querySelector('.switch-btn')
+        if (switchBtn) fireEvent.click(switchBtn)
+        expect(screen.getByText(/search/i)).toBeInTheDocument()
     })
-
 })

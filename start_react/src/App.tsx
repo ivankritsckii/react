@@ -25,7 +25,6 @@ export function App({ page = 1 }) {
         searchValue: curSearchValue,
         page: page,
     })
-    console.log(todos)
 
     const state = useSelector(
         (state: { toolkit: { curPage: number; pages: [] } }) => {
