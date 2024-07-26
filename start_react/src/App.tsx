@@ -5,76 +5,105 @@ import './searchStyle.css'
 import { Pagination } from './pagination.tsx'
 import { Link } from 'react-router-dom'
 import { useLocalStorage } from './helpers/useLS.ts'
-import { useGetTodosQuery } from "./APIRequests/sliceAPI"
+import { useGetTodosQuery } from './APIRequests/sliceAPI'
 import { addPage, setCurPage } from './tookitRedux/toolKitSlice.ts'
 import { useDispatch, useSelector } from 'react-redux'
 import { ThemeContent } from './helpers/themeChanger.tsx'
 
 export function App({ page = 1 }) {
     const [searchValue, setSearchValue] = useLocalStorage('searchValue', '')
-    const [curSearchValue, setCurSearchValue] = useLocalStorage('searchValue', '')
+    const [curSearchValue, setCurSearchValue] = useLocalStorage(
+        'searchValue',
+        ''
+    )
     const [serchResult, setSerchResult] = useState('{}')
-    const [isError, setIsError] = useState(false);
-    const {isdarkMode, toggleDarkMode}= useContext(ThemeContent);
-    const dispatch = useDispatch();
+    const [isError, setIsError] = useState(false)
+    const { isdarkMode, toggleDarkMode } = useContext(ThemeContent)
+    const dispatch = useDispatch()
 
-    const {
-        data: todos,
-        isSuccess,
-    } = useGetTodosQuery({searchValue: curSearchValue, page: page});
+    const { data: todos, isSuccess } = useGetTodosQuery({
+        searchValue: curSearchValue,
+        page: page,
+    })
     console.log(todos)
-   
-    const state = useSelector((state:{toolkit:{curPage:number, pages:[]}}) => {
-        const curPage = state.toolkit.curPage;
-        return state.toolkit.pages[curPage]
-    });
-    
+
+    const state = useSelector(
+        (state: { toolkit: { curPage: number; pages: [] } }) => {
+            const curPage = state.toolkit.curPage
+            return state.toolkit.pages[curPage]
+        }
+    )
+
     if (isError) {
         throw new Error('new Error')
     }
 
     useEffect(() => {
-        if(todos) {
-            dispatch(addPage({pageInfo:todos, pageNum: page, searchReq:searchValue}));
-            dispatch(setCurPage(`searchReq:${searchValue} pageNum:${page}`));
+        if (todos) {
+            dispatch(
+                addPage({
+                    pageInfo: todos,
+                    pageNum: page,
+                    searchReq: searchValue,
+                })
+            )
+            dispatch(setCurPage(`searchReq:${searchValue} pageNum:${page}`))
         }
     }, [todos])
 
     useEffect(() => {
-        if(state) {setSerchResult(state);
+        if (state) {
+            setSerchResult(state)
         }
     }, [state])
     return (
-            <div className="root_wraper">
-                {LoadingOpenClose(isSuccess)}
-                <div className={isdarkMode ? "search_wraper search_wraper_dark" : "search_wraper"}>
-                    <input
-                    placeholder='Search character'
-                        value={searchValue}
-                        onChange={(e) => {
-                            setSearchValue(e.target.value)
-                        }}
-                    />
-                    <Link to={`/react/page=1`}>
-                        <button
-                            className= {isdarkMode ? 'search_btn' : 'search_btn button_dark'}
-                            onClick={() => {
-                                setCurSearchValue(searchValue);
-                            }}
-                        >
-                            Search
-                        </button>
-                    </Link>
+        <div className="root_wraper">
+            {LoadingOpenClose(isSuccess)}
+            <div
+                className={
+                    isdarkMode
+                        ? 'search_wraper search_wraper_dark'
+                        : 'search_wraper'
+                }
+            >
+                <input
+                    placeholder="Search character"
+                    value={searchValue}
+                    onChange={(e) => {
+                        setSearchValue(e.target.value)
+                    }}
+                />
+                <Link to={`/react/page=1`}>
                     <button
-                        className= {isdarkMode ? 'search_btn error_btn' : 'search_btn  error_btn_dark'}
-                        onClick={() => setIsError(true)}
+                        className={
+                            isdarkMode ? 'search_btn' : 'search_btn button_dark'
+                        }
+                        onClick={() => {
+                            setCurSearchValue(searchValue)
+                        }}
                     >
-                        Throw an error
+                        Search
                     </button>
-                    <div className={isdarkMode ? 'switch-btn switch-on' : 'switch-btn'} onClick={() => toggleDarkMode()}></div>
-                </div>
-                <MainWraper />
-                <Pagination serchResult={JSON.parse(JSON.stringify(serchResult))} />
+                </Link>
+                <button
+                    className={
+                        isdarkMode
+                            ? 'search_btn error_btn'
+                            : 'search_btn  error_btn_dark'
+                    }
+                    onClick={() => setIsError(true)}
+                >
+                    Throw an error
+                </button>
+                <div
+                    className={
+                        isdarkMode ? 'switch-btn switch-on' : 'switch-btn'
+                    }
+                    onClick={() => toggleDarkMode()}
+                ></div>
             </div>
+            <MainWraper />
+            <Pagination serchResult={JSON.parse(JSON.stringify(serchResult))} />
+        </div>
     )
 }

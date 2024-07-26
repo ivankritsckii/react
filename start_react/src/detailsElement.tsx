@@ -5,13 +5,13 @@ import { ThemeContent } from './helpers/themeChanger.tsx'
 import { useSelector } from 'react-redux'
 
 export function DatailsElement() {
-
-    const curState = useSelector((state:{toolkit:{curPage:number, pages:{results:[]}[]}}) => {
-        const curPage = state.toolkit.curPage;
-        return state.toolkit.pages[curPage].results
-    });
-    console.log(curState)
-    const {isdarkMode}= useContext(ThemeContent)
+    const curState = useSelector(
+        (state: { toolkit: { curPage: number; pages: { results: [] }[] } }) => {
+            const curPage = state.toolkit.curPage
+            return state.toolkit.pages[curPage].results
+        }
+    )
+    const { isdarkMode } = useContext(ThemeContent)
     const characterDef = [
         {
             name: 'def',
@@ -27,12 +27,22 @@ export function DatailsElement() {
     const current = localStorage.getItem('current_caracter_name')
     useEffect(() => {
         if (current) {
-            setCharacter(curState.filter((item: {name: string}) => item.name === localStorage.getItem('current_caracter_name')))
+            setCharacter(
+                curState.filter(
+                    (item: { name: string }) =>
+                        item.name ===
+                        localStorage.getItem('current_caracter_name')
+                )
+            )
         }
     }, [current])
     const [character, setCharacter] = useState(characterDef)
     return (
-        <div className={isdarkMode ? "details_wraper" : "details_wraper detail_dark"}>
+        <div
+            className={
+                isdarkMode ? 'details_wraper' : 'details_wraper detail_dark'
+            }
+        >
             <div className="details_titel">Detailed information</div>
             <div className="details_name">Name: {character[0].name}</div>
             <div className="details_name">Height: {character[0].height}</div>

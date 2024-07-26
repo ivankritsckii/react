@@ -6,7 +6,7 @@ import { ThemeContent } from './helpers/themeChanger.tsx'
 export function Pagination(args: {
     serchResult: { results: []; count: number; next: string }
 }) {
-    const {isdarkMode}= useContext(ThemeContent)
+    const { isdarkMode } = useContext(ThemeContent)
     const [selectBtn, setSelectBtn] = useState(1)
     const resPagination = []
     if (args.serchResult.count > 9) {
@@ -37,5 +37,15 @@ export function Pagination(args: {
         }
     }
 
-    return <div className={isdarkMode ? 'pagination_wraper' : 'pagination_wraper pagination_dark'}>{resPagination}</div>
+    return (
+        <div
+            className={
+                isdarkMode
+                    ? 'pagination_wraper'
+                    : 'pagination_wraper pagination_dark'
+            }
+        >
+            {resPagination}
+        </div>
+    )
 }

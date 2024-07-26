@@ -7,15 +7,14 @@ import { Provider } from 'react-redux'
 import { store } from './tookitRedux/index.ts'
 import { ThemeProvider } from './helpers/themeChanger.tsx'
 
-
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
         <MyErrorBoundary>
-            < Provider store={store}>
-                 <ThemeProvider>
-                     <BrowserRouter>
+            <Provider store={store}>
+                <ThemeProvider>
+                    <BrowserRouter>
                         <Router />
-                      </BrowserRouter>
+                    </BrowserRouter>
                 </ThemeProvider>
             </Provider>
         </MyErrorBoundary>
