@@ -20,7 +20,6 @@ export function CheckBox(obj: { obj: { name: string } }) {
             return resultsArr[index]
         }
     )
-    //console.log(curObj)
 
     const [checked, setChecked] = React.useState(() => {
         for (let i = 0; i < selectedArr.length; i++) {
@@ -56,7 +55,6 @@ export function CheckBox(obj: { obj: { name: string } }) {
                 onClick={(e) => handleClick(e)}
                 onChange={() => {
                     if (checked) {
-                        console.log('checked')
                         dispatch(deSelectElement(curObj))
                     } else {
                         dispatch(selectElement(curObj))

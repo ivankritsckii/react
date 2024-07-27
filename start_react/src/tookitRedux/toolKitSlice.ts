@@ -26,7 +26,6 @@ const TKSlice = createSlice({
             state.selectedEl.push(name)
         },
         deSelectElement(state,action) {
-            console.log(action)
             state.selectedEl = state.selectedEl.filter(item => item.name !== action.payload.name)
         },
         deselectAll(state) {

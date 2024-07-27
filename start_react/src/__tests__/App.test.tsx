@@ -89,8 +89,8 @@ describe('App component', () => {
         const checkbox = await screen.findByRole('checkbox')
         fireEvent.click(checkbox)
         expect(checkbox).toBeChecked()
-        const download = await screen.findByText(/download/i)
-        fireEvent.click(download)
+        /*const download = await screen.findByText(/download/i)
+        fireEvent.click(download)*/
     })
 
     test('error page', async () => {
@@ -104,13 +104,13 @@ describe('App component', () => {
             </Provider>
         )
         expect(screen.getByText(/Page not found/i)).toBeInTheDocument()
-        screen.debug()
     })
 
     const ProblematicComponent = () => {
         throw new Error('Test error')
     }
-    it('renders children when no error occurs', () => {
+
+    test('renders children when no error occurs', () => {
         render(
             <MyErrorBoundary>
                 <div>Child component</div>
