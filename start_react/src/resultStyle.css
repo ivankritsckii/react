@@ -1,0 +1,96 @@
+.result_window_wraper{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.result_window_wraper_dark{
+    background-color: rgb(155, 155, 153);
+}
+.card_wraper{
+    width: 300px;
+    height: 500px;
+    background-color: rgb(224, 224, 254);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-size: 30px;
+    gap: 5px;
+    text-align: center;
+}
+.card_dark{
+    background-color: rgb(83, 83, 97);
+    color: white;
+}
+.card_name{
+    font-weight: bold;
+}
+.search_value_wraper{
+    width: 400px;
+    background-color: rgb(255, 255, 229);
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+.datails_wraper{
+    top: 15px;
+    position: sticky;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    height: calc(50vh + 60px);
+}
+.details_titel{
+    font-size: 32px;
+    font-weight: bold;
+}
+.details_wraper{
+    width: 295px;
+    height: 50vh;
+    background-color: rgb(192, 138, 242);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.card_checkbox{
+    width: 20px;
+    height: 20px;
+    cursor: cell;
+}
+
+.detail_selected_wraper{
+    position: fixed;
+    top: 160px;
+    left: 5vw;
+    width: 130px;
+    height: 200px;
+    background-color: rgb(192, 138, 242);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+.detail_dark{
+    background-color: rgb(90, 96, 143);
+    color: white;
+}
+.btns_wraper{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.count_selected_element{
+    font-weight: bold;
+}
+.empty{
+    background: white;
+    background-color: rgb(155, 155, 153, 0);
+}
