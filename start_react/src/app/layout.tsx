@@ -1,4 +1,7 @@
+
+
 import type { Metadata } from 'next'
+
 
 export const metadata: Metadata = {
   title: 'Class Components',
@@ -6,15 +9,16 @@ export const metadata: Metadata = {
 }
 
 export default function RootLayout({
-    children,
+    children
   }: {
     children: React.ReactNode
   }) {
     return (
       <html lang="en">
-        <body>
-            <div id="root">{children}</div>
-        </body>
-      </html>
+      <body>
+        <div id="root">{children}</div>
+      </body>
+    </html>
+
       )
   }

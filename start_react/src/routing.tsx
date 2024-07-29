@@ -14,11 +14,11 @@ export function Router() {
         arrRouting.push(
             <Route
                 key={`route${i}`}
-                path={`/react/page=${i}`}
+                path={`/page=${i}`}
                 element={<App page={i} />}
             >
                 <Route
-                    path={`/react/page=${i}/datails`}
+                    path={`/page=${i}/datails`}
                     element={<DatailsElement />}
                 />
             </Route>
@@ -26,7 +26,7 @@ export function Router() {
     }
     return (
         <Routes>
-            <Route path="/react" element={<App />} />
+            <Route path="" element={<App />} />
             {arrRouting}
             <Route path="*" element={<Page404 />} />
         </Routes>
