@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'
 import './pagination.css'
 import { useState, useContext } from 'react'
 import { ThemeContent } from './helpers/themeChanger.tsx'
+import Link from 'next/link'
 
 export function Pagination(args: {
     serchResult: { results: []; count: number; next: string }
@@ -14,21 +14,23 @@ export function Pagination(args: {
             if (selectBtn === i + 1) {
                 resPagination.push(
                     <Link
-                        to={`/react/page=${i + 1}`}
-                        className="pagination_element  selected_element"
-                        key={`pagination${i + 1}`}
                         onClick={() => setSelectBtn(i + 1)}
+                        href={`/react/page=${i + 1}`}
+                        className="pagination_element  selected_element"
+                        key={`pagination${i + 1}`}  
                     >
                         {i + 1}
                     </Link>
                 )
             } else {
                 resPagination.push(
-                    <Link
-                        to={`/react/page=${i + 1}`}
+                    <Link    
+                        onClick={() => {setSelectBtn(i + 1)
+                            console.log(selectBtn)
+                        }}
                         className="pagination_element"
                         key={`pagination${i + 1}`}
-                        onClick={() => setSelectBtn(i + 1)}
+                        href={`/react/page=${i + 1}`}
                     >
                         {i + 1}
                     </Link>

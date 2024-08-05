@@ -1,13 +1,16 @@
 import './resultStyle.css'
-import { Link, Outlet } from 'react-router-dom'
+//import { Outlet } from 'react-router-dom'
+import Link from 'next/link'
 import { CheckBox } from './helpers/checkbox'
 import { DetailSelected } from './detailSelected'
 import { useSelector } from 'react-redux'
-import { useContext } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { ThemeContent } from './helpers/themeChanger.tsx'
 import { todo } from './interfaces/todoInterface.ts'
+import { DatailsElement } from './detailsElement.tsx'
 
 export function MainWraper() {
+    const [isDatailsOpen, setIsDatailsOpen] = useState(false);
     const { isdarkMode } = useContext(ThemeContent)
     const curState: todo = useSelector(
         (state: { toolkit: { curPage: number; pages: [] } }) => {
@@ -15,11 +18,18 @@ export function MainWraper() {
             return state.toolkit.pages[curPage]
         }
     )
+
+    useEffect(() => {
+        setIsDatailsOpen(!!window.location.href.split('/datail')[1])
+        }
+    , [window.location.href])
+
+
     if (curState && curState.results) {
         const searchList = curState.results.map((item) => {
             return (
                 <Link
-                    to={`${window.location.href.split('/datails')[0]}/datails`}
+                    href={`${window.location.href.split('/datails')[0]}/datails`}
                     key={item.name}
                 >
                     <div
@@ -54,11 +64,11 @@ export function MainWraper() {
                 }
             >
                 <DetailSelected />
-                <Link to={window.location.href.split('datails')[0]}>
+                <Link href={window.location.href.split('datails')[0]}>
                     <div className="search_value_wraper">{searchList}</div>
                 </Link>
                 <div className="datails_wraper">
-                    <Outlet />
+                {isDatailsOpen ? <DatailsElement />: ''}
                 </div>
             </div>
         )

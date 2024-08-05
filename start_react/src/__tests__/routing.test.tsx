@@ -1,5 +1,5 @@
 import React from 'react'
-import { Router } from '../routing.tsx'
+import { App } from '../App.tsx'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from '../helpers/themeChanger.tsx'
 import { store } from '../tookitRedux/index.ts'
@@ -16,14 +16,14 @@ describe('Routing test', () => {
                     <Provider store={store}>
                         <ThemeProvider>
                             <BrowserRouter>
-                                <Router />
+                                <App />
                             </BrowserRouter>
                         </ThemeProvider>
                     </Provider>
                 </MyErrorBoundary>
             </React.StrictMode>
         )
-        expect(screen.getByText(/Page not found/i)).toBeInTheDocument()
+        expect(screen.getByText(/Search/i)).toBeInTheDocument()
         screen.debug()
     })
 })

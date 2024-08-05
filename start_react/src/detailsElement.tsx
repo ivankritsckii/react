@@ -1,5 +1,5 @@
 import './resultStyle.css'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { useState, useEffect, useContext } from 'react'
 import { ThemeContent } from './helpers/themeChanger.tsx'
 import { useSelector } from 'react-redux'
@@ -35,7 +35,7 @@ export function DatailsElement() {
                 )
             )
         }
-    }, [current, curState])
+    }, [current])
     const [character, setCharacter] = useState(characterDef)
     return (
         <div
@@ -60,7 +60,7 @@ export function DatailsElement() {
                 Birth Year: {character[0].birth_year}
             </div>
             <div className="details_name">Gender: {character[0].gender}</div>
-            <Link to={window.location.href.split('datails')[0]}>
+            <Link href={window.location.href.split('datails')[0]}>
                 <button>Close</button>
             </Link>
         </div>

@@ -3,7 +3,7 @@ import { LoadingOpenClose } from './helpers/loadingOpenClose.tsx'
 import { MainWraper } from './mainWraper.tsx'
 import './searchStyle.css'
 import { Pagination } from './pagination.tsx'
-import { Link } from 'react-router-dom'
+import Link from 'next/link'
 import { useLocalStorage } from './helpers/useLS.ts'
 import { useGetTodosQuery } from './APIRequests/sliceAPI'
 import { addPage, setCurPage } from './tookitRedux/toolKitSlice.ts'
@@ -72,7 +72,7 @@ export function App({ page = 1 }) {
                         setSearchValue(e.target.value)
                     }}
                 />
-                <Link to={`/react/page=1`}>
+                <Link href={`/react/page=1`}>
                     <button
                         className={
                             isdarkMode ? 'search_btn' : 'search_btn button_dark'

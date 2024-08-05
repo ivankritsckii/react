@@ -8,6 +8,8 @@ import { App } from '../App'
 import { vi } from 'vitest'
 import { Page404 } from '../Page_404/page_404'
 import { MyErrorBoundary } from '../helpers/errorHeandlet.tsx'
+import React from 'react'
+import HomePage from '../app/react/[numPage]/page.jsx'
 
 const setup = async (LSvalue: string | null = null) => {
     if (LSvalue !== null) {
@@ -18,6 +20,8 @@ const setup = async (LSvalue: string | null = null) => {
 
     await act(async () => {
         render(
+            <React.StrictMode>
+        <MyErrorBoundary>
             <Provider store={store}>
                 <ThemeProvider>
                     <BrowserRouter>
@@ -25,6 +29,8 @@ const setup = async (LSvalue: string | null = null) => {
                     </BrowserRouter>
                 </ThemeProvider>
             </Provider>
+        </MyErrorBoundary>
+    </React.StrictMode>
         )
     })
 }
@@ -85,7 +91,7 @@ describe('App component', () => {
     })
 
     test('click on checkbox', async () => {
-        await setup('r2')
+        await setup('r2');
         const checkbox = await screen.findByRole('checkbox')
         fireEvent.click(checkbox)
         expect(checkbox).toBeChecked()
@@ -145,5 +151,11 @@ describe('App component', () => {
         const switchBtn = container.querySelector('.switch-btn')
         if (switchBtn) fireEvent.click(switchBtn)
         expect(screen.getByText(/search/i)).toBeInTheDocument()
+    })
+    test('new test', async () => {
+        render(
+            <HomePage params={{numPage: 'page=1'}}/>
+        )
+        expect(screen.getByText(/Search/i)).toBeInTheDocument()
     })
 })
